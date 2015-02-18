@@ -1,0 +1,77 @@
+<html>
+<head>
+    <title>EMS</title>
+</head>
+<body ng-app="EMS" ng-onload="checkUserExist()">
+    <div ng-controller="EMS-Controller">
+        <div id="header">
+            <img ng-src="{{content.menuImage}}" id="menuImage" content-slide/>
+            <span id="menuCaption"><strong>Menu</strong></span>
+            <img ng-src="{{content.mainImage}}" id="headerImage"/>
+            <div class="welcomeUser">
+                <span ng-bind="user.name"></span>
+                <a ng-show="user.name" ui-sref="home" ng-click="logout()">Logout</a>
+            </div>
+
+        </div>
+        <div class="userAuthentication" kendo-window="userAuthenticationPopUp"
+             k-title="'User Authentication Error'"
+             k-width="450"
+             k-height="150"
+             k-visible="false"
+             k-modal="true"
+             k-content="{url: 'userAuthentication.html'}"
+             k-position="{ top: 150, left:450 }"
+             k-on-open="userAuthenticationPopUp = true"
+             k-on-close="userAuthenticationPopUp = false">
+        </div>
+        <div id="leftContentPane" style="display: none;">
+            <ul kendo-menu k-orientation="'vertical'">
+                <li><i class="icon-large icon-group"></i>Employee
+                    <ul>
+                        <li ng-click="userAccess('employee-details')"><i class="icon-large icon-plus-sign"></i>Add employee</li>
+                        <li ng-click="userAccess('employee-profile')"><i class="icon-large icon-settings"></i>Profile Setup</li>
+                    </ul>
+                </li>
+                <li><i class="icon-large icon-cargo"></i>Company
+                    <ul>
+                        <li id="panel1" ng-click="userAccess('company-details')"><i class="icon-large icon-plus-sign"></i>Add Company</li>
+                        <li  ng-click="userAccess('company-pie')"><i class="icon-large icon-ruller"></i>Company Chart</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div style="border-radius:5px;" id="rightViewPane" ui-view></div>
+    </div>
+    <script src="../scripts/lib/jquery-1.9.1.min.js"></script>
+    <script src="../scripts/lib/angular.min.js"></script>
+    <script src="../scripts/app.js"></script>
+    <script src="../scripts/lib/appJquery.js"></script>
+    <script src="../scripts/lib/kendo.all.min.js"></script>
+    <script src="../scripts/lib/angular-ui-router.min.js"></script>
+    <script src="../scripts/lib/angular-local-storage.js"></script>
+    <script src="../scripts/lib/pdf.js"></script>
+    <script src="../scripts/lib/pdf.worker.js"></script>
+    <script src="../scripts/lib/kendo-window.js"></script>
+    <script src="../scripts/controllers/registration-conroller.js"></script>
+    <script src="../scripts/controllers/login-conroller.js"></script>
+    <script src="../scripts/controllers/main-conroller.js"></script>
+    <script src="../scripts/controllers/company-conroller.js"></script>
+    <script src="../scripts/controllers/employee-conroller.js"></script>
+    <script src="../scripts/services/authentication-service.js"></script>
+    <script src="../scripts/services/notification-service.js"></script>
+    <script src="../scripts/services/custom-grid-service.js"></script>
+    <script src="../scripts/services/company-detail-service.js"></script>
+    <script src="../scripts/directives/zoom-content-directive.js"></script>
+    <script src="../scripts/directives/content-slide-directive.js"></script>
+    <script src="../scripts/directives/custom-validate-directive.js"></script>
+    <script src="../scripts/directives/custom-window-directive.js"></script>
+
+
+    <link href="../styles/kendo.common.min.css" rel="stylesheet" />
+    <link href="../styles/kendo.default.min.css" rel="stylesheet" />
+    <link href="../styles/stylesheet.css" rel="stylesheet"/>
+    <link href="../styles/bootstrap.icon-large.css" rel="stylesheet"/>
+    <link href="../styles/animate.css" rel="stylesheet"/>
+</body>
+</html>

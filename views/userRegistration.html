@@ -1,0 +1,39 @@
+<div id="registrationPane" ng-controller="RegistrationController">
+    <form name="registrationForm" novalidate>
+        <ul>
+            <li>
+                <i class="icon-large icon-user"></i>
+                <input type="text" class="k-textbox" placeholder="User Name" ng-model="user.userName" name="name"
+                    required ng-pattern="/^[a-zA-Z]+$/" ng-class="getCssClass(registrationForm.name)">
+                <span class="error">{{getErrorMessage(registrationForm.name, "invalid user name")}}</span>
+            </li>
+            <li>
+                <i class="icon-large icon-keys"></i>
+                <input type="text" class="k-textbox" placeholder="Password" ng-model="user.password" name="password"
+                    required ng-pattern="/^[a-zA-Z]+$/" ng-class="getCssClass(registrationForm.password)">
+                    <span class="error">{{getErrorMessage(registrationForm.password, "")}}</span>
+            </li>
+            <li>
+                <i class="icon-large icon-computer-locked"></i>
+                <input type="text" class="k-textbox" placeholder="Confirm Password" ng-model="user.confirmPassword" name="confrimPassword"
+                        required ng-class="getCssClass(registrationForm.confrimPassword)" custom-validate="user.password">
+                <span class="error" ng-show="registrationForm.confrimPassword.$error.match">passwrd not matched</span>
+            </li>
+            <li>
+                <i class="icon-large icon-message-full"></i>
+                <input type="email" class="k-textbox" placeholder="Email" ng-model="user.email" name="email"
+                        required ng-class="getCssClass(registrationForm.email)">
+                <span class="error">{{getErrorMessage(registrationForm.email, "invalid email address")}}</span>
+            </li>
+            <li>
+                <i class="icon-large icon-phone"></i>
+                <input type="text" class="k-textbox" placeholder="Contact number" ng-model="user.contact" name="contact"
+                        required ng-pattern="/^[0-9]{10}$/" ng-class="getCssClass(registrationForm.contact)">
+                <span class="error" >{{getErrorMessage(registrationForm.contact, "invalid contact number")}}</span>
+            </li>
+        </ul>
+        <button kendo-button class="k-primary" ng-disabled="registrationForm.$invalid" ng-click="registerUser()">
+            <i class="icon-large icon-check"></i></span><strong>Submit</strong>
+        </button>
+    </form>
+</div>

@@ -1,0 +1,40 @@
+[
+    {
+        "name": "English",
+        "value" : "English"
+
+    },
+    {
+        "name": "French",
+        "value" : "French"
+
+    },
+    {
+        "name": "Chinese",
+        "value" : "Chinese"
+
+    },
+    {
+        "name": "German",
+        "value" : "German"
+
+    },
+    {
+        "name": "Tamil",
+        "value" : "Tamil"
+
+    },
+    {
+        "name": "Japanese",
+        "value" : "Japanese"
+
+    },{
+        "name": "Bengali",
+        "value" : "Bengali"
+
+    },
+    {
+        "name": "Hindi",
+        "value" : "Hindi"
+    }
+]

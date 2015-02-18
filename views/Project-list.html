@@ -1,0 +1,8 @@
+<div ng-controller="EmployeeController">
+    <div kendo-list-view="listView" k-data-source="workingProjectList">
+        <div class="projects" k-template>
+            <img src="../assets/image/project-image/{{dataItem}}.jpg"/>
+            <h3>{{dataItem}}</h3>
+        </div>
+    </div>
+</div>

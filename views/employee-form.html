@@ -1,0 +1,72 @@
+
+<form name="employeeForm" novalidate>
+    <div ng-include="'notification-template.html'"></div>
+    <ul class="employeeInputs" style="margin-left:20px">
+        <li>
+            <input type="text" class="k-textbox" placeholder="Enter first Name" name="fname" ng-model="employee.firstName"
+                    custom-validate  required ng-pattern="/^[a-zA-Z]+$/"/>
+            <br/><span class="error">{{getErrorMessage(employeeForm.fname, "invalid first name")}}</span>
+        </li>
+        <li>
+            <input type="text" class="k-textbox" placeholder="Address1" name="add1" ng-model="employee.address1" required/>
+            <br/><span class="error">{{getErrorMessage(employeeForm.add1, "invalid address")}}</span>
+        </li>
+        <li>
+            <select kendo-drop-down-list ng-model="employee.country" name="country" required k-options="countryOptions"></select>
+        </li>
+        <li>
+            <input type="text" class="k-textbox" placeholder="City" name="city" ng-model="employee.city" required ng-pattern="/^[a-zA-Z]*\s*[a-zA-Z]+$/"/>
+            <br/><span  class="error">{{getErrorMessage(employeeForm.city, "invalid city")}}</span>
+        </li>
+        <li>
+            <input type="email" class="k-textbox" placeholder="Email" name="email" ng-model="employee.email" required/>
+            <br/><span class="error">{{getErrorMessage(employeeForm.email, "invalid email address")}}</span>
+        </li>
+        <li>
+            <input type="radio" value="male"  ng-model="employee.sex"/>Male
+            <input type="radio" value="female"  ng-model="employee.sex"/>Female
+        </li>
+        <li>
+            <input kendo-date-picker placeholder="Date of Join" name="doj" ng-model="employee.doj" required/>
+            <br/><span class="error">{{getErrorMessage(employeeForm.doj, "invalid email address")}}</span>
+        </li>
+    </ul>
+    <ul class="employeeInputs">
+        <li><input type="text" class="k-textbox" placeholder="Enter last Name" name="lname" ng-model="employee.lastName" required
+                   ng-pattern="/^[a-zA-Z]+$/"/>
+        <br/><span class="error">{{getErrorMessage(employeeForm.lname, "invalid last name")}}</span>
+        </li>
+        <li>
+            <input type="text" class="k-textbox" placeholder="address2" name="add2" ng-model="employee.address2" required/>
+            <br/><span class="error">{{getErrorMessage(employeeForm.add2, "invalid address")}}</span>
+        </li>
+        <li>
+            <input type="text" class="k-textbox" placeholder="Enter State" name="state" ng-model="employee.state" required ng-pattern="/^[a-zA-Z]*\s*[a-zA-Z]+$/"/>
+            <br/><span class="error">{{getErrorMessage(employeeForm.state, "invalid state")}}</span>
+        </li>
+        <li>
+            <input type="text" class="k-textbox" placeholder="Pin" name="pin" ng-model="employee.pin" required ng-pattern="/^[0-9]{6}$/"/>
+            <br/><span class="error">{{getErrorMessage(employeeForm.pin, "invalid pin")}}</span>
+        </li>
+        <li>
+            <input type="text" class="k-textbox" placeholder="Mobile" name="mobile" ng-model="employee.mobile" required ng-pattern="/^[0-9]{10}$/"/>
+            <br/><span class="error">{{getErrorMessage(employeeForm.mobile, "invalid mobile number")}}</span>
+        </li>
+        <li>
+            <input type="radio" value="Fresher" ng-model="employee.type"/>Fresher
+            <input type="radio" value="Experienced" ng-model="employee.type"/>Experienced
+        </li>
+        <li>
+            <select kendo-drop-down-list ng-model="employee.company" required k-options="companyList" k-option-label="'---Select Company---'"></select>
+        </li>
+    </ul>
+    <br/>
+    <div class="demo-section k-header">
+        <span><i class="icon-large icon-picture"></i><strong>Upload an image</strong></span>
+        <input kendo-upload accept='image/*'
+               onchange="angular.element(this).scope().onImageSelect(event)" name="files" id="files" ng-model="abc.empImage"
+               type="file"/>
+    </div>
+    <button ng-show="addVisible" ng-click="employeeSubmit();employeeForm.$setPristine()" kendo-button class="k-primary combineButton" ng-disabled="employeeForm.$invalid"><span class="k-icon k-add"></span>Add</button>
+    <button ng-show="updateVisible" ng-click="updateEmployee();employeeForm.$setPristine()" kendo-button class="k-primary combineButton" ng-disabled="employeeForm.$invalid"><span class="k-icon k-update"></span>Update</button>
+</form>

@@ -1,0 +1,85 @@
+<div ng-controller="EmployeeController">
+    <div id="employeeDetails" style="height: 970px">
+        <div class="ListHeader">
+            <i class="icon-large icon-parents"></i>
+            <span>Employee List</span>
+        </div>
+            <ul>
+                <li style="margin-left:40px;" ng-repeat="imgValue in employeeImageArray" zoom-content>
+                    <img id="uploadImage" ng-src="{{imgValue.image}}"/><br/>
+                    <span style=" white-space: wrap;">{{imgValue.name}}</span>
+                </li>
+            </ul>
+    </div>
+
+    <div id="EmployeePane">
+        <div class="deleteConfirmation" kendo-window="editEmployeePopUp"
+             k-title="'Delete Confirmation'"
+             k-width="450"
+             k-height="150"
+             k-visible="false"
+             k-modal="true"
+             k-position="{ top: 350, left:450 }"
+             k-content="{url: 'deleteConfirmation.html' }"
+             k-on-open="editEmployeePopUpvisible = true"
+             k-on-close="editEmployeePopUpvisible = false">
+        </div>
+        <div class="updateEmployee" kendo-window="updateEmployeePopUp"
+             k-title="'Update Employee'"
+             k-width="600"
+             k-height="600"
+             k-visible="false"
+             k-modal="true"
+             k-position="{ top: 150, left:350 }"
+             k-content="{url: formUrl }"
+             k-on-open="updateEmployeePopUpvisible = true"
+             k-on-close="updateEmployeePopUpvisible = false">
+        </div>
+        <div  id="employeeContents">
+            <div ng-include="'employee-form.html'"></div>
+        </div>
+        <hr/>
+        <div kendo-grid id="employeeDetailGrid"
+            class="detailGrid"
+            k-options="employeeGridOptions"
+            k-data-source="employeeGridData"
+            k-pageable='{ "refresh": true, "pageSizes": true }'
+            k-scrollable= "true",
+            k-sortable= "true",
+            k-selectable= "true",
+            k-data-bound = "employeeGridDataBound",
+            k-columns= '[
+                   { field: "firstName", title:"FName", width: "90px",
+                    attributes: {"ng-dblclick":"updateEmployeePopUp.open();editEmployee(dataItem)"} },
+                   { field: "lastName", title:"LName", width: "100px",
+                    attributes: {"ng-dblclick":"updateEmployeePopUp.open();editEmployee(dataItem)"} },
+                   { field: "address1", title:"Address1", width: "100px",
+                    attributes: {"ng-dblclick":"updateEmployeePopUp.open();editEmployee(dataItem)"}},
+                   { field: "address2", title: "Address2", width: "90px",
+                    attributes: {"ng-dblclick":"updateEmployeePopUp.open();editEmployee(dataItem)"}},
+                   { field: "state", title:"State", width: "130px",
+                    attributes: {"ng-dblclick":"updateEmployeePopUp.open();editEmployee(dataItem)"}},
+                   { field: "country", title:"Country", width: "100px",
+                    attributes: {"ng-dblclick":"updateEmployeePopUp.open();editEmployee(dataItem)"}},
+                   { field: "pin", title: "Pin", width: "100px",
+                    attributes: {"ng-dblclick":"updateEmployeePopUp.open();editEmployee(dataItem)"} },
+                   { field: "mobile", title:"Contact" , width: "100px",
+                    attributes: {"ng-dblclick":"updateEmployeePopUp.open();editEmployee(dataItem)"} },
+                   { field: "email", title:"Email", width: "250px",
+                    attributes: {"ng-dblclick":"updateEmployeePopUp.open();editEmployee(dataItem)"} },
+                   { field: "sex", title: "Gender", width: "90px",
+                    attributes: {"ng-dblclick":"updateEmployeePopUp.open();editEmployee(dataItem)"} },
+                   { field: "type", title:"EmployeeType", width: "130px",
+                    attributes: {"ng-dblclick":"updateEmployeePopUp.open();editEmployee(dataItem)"} },
+                   { field: "doj", title:"DOJ", width: "100px",
+                    attributes: {"ng-dblclick":"updateEmployeePopUp.open();editEmployee(dataItem)"} },
+                   { field: "company", title:"Company" , width: "100px",
+                    attributes: {"ng-dblclick":"updateEmployeePopUp.open();editEmployee(dataItem)"} },
+                   { template : "<button kendo-button class=\"k-primary\" ng-click=\"viewResume(dataItem)\">View</button>", width:"100px"},
+                   {template  : "<button kendo-button class=\"k-primary\" ng-click=\"updateEmployeePopUp.open();editEmployee(dataItem)\"><span class=\"k-icon k-edit\"></span>Edit</button>", width:"100px"},
+                   { template : "<button kendo-button class=\"k-primary\" ng-click=\"editEmployeePopUp.open();deleteEmployeeRecord(dataItem)\">Delete</button>", width:"100px"}
+               ]'
+            ></div>
+    </div>
+    <div pdf-viewer src="sample.pdf"></div>
+</div>

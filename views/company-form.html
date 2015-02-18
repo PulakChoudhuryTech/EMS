@@ -1,0 +1,42 @@
+
+<form id="companyForm" name="companyForm" novalidate>
+    <div ng-include="'notification-template.html'"></div>
+    <ul class="companyInputs">
+        <li>
+            <input type="text" class="k-textbox" placeholder="Enter Company Name" name="companyName" ng-model="company.name"
+                    custom-validate  required ng-pattern="/^[a-zA-Z]*\s*[a-zA-Z]+$/"/>
+            <br/><span class="error">{{getErrorMessage(companyForm.companyName, "invalid company name")}}</span>
+        </li>
+        <li>
+            <input type="text" class="k-textbox" placeholder="Enter Address" name="companyAddress" ng-model="company.address"
+            required/>
+            <br/><span class="error">{{getErrorMessage(companyForm.companyAddress, "")}}</span>
+        </li>
+        <li>
+            <select kendo-drop-down-list ng-model="company.country" name="country" required k-options="countryOptions"></select>
+        </li>
+        <li><input type="text" class="k-textbox" placeholder="Enter Contact number" ng-model="company.contact" name="contact" required
+                    ng-pattern="/^[0-9]{10}$/"/>
+            <br/><span class="error">{{getErrorMessage(companyForm.contact, "invalid contact number")}}</span>
+        </li>
+    </ul>
+    <ul class="companyInputs">
+        <li><input type="text" class="k-textbox" placeholder="Enter CEO name" name="ceoName" ng-model="company.ceo"
+            required ng-pattern="/^[a-zA-Z]*\s*[a-zA-Z]+$/"/>
+            <br/><span class="error">{{getErrorMessage(companyForm.ceoName, "invalid CEO name")}}</span>
+        </li>
+        <li><input type="text" class="k-textbox" placeholder="Enter State" name="companyState" ng-model="company.state" required
+                    ng-pattern="/^[a-zA-Z]*\s*[a-zA-Z]+$/"/>
+            <br/><span class="error">{{getErrorMessage(companyForm.companyState, "invalid state")}}</span>
+        </li>
+        <li><input type="text" class="k-textbox" placeholder="Enter pin" name="pin" ng-model="company.pin" required
+                    ng-pattern="/^[0-9]{6}$/"/>
+            <br/><span class="error">{{getErrorMessage(companyForm.pin, "invalid pin")}}</span>
+        </li>
+        <li><input type="url" class="k-textbox" placeholder="Enter Website url" name="url" ng-model="company.website" required/>
+            <br/><span class="error">{{getErrorMessage(companyForm.url, "invalid url")}}</span>
+        </li>
+    </ul><br/>
+</form>
+<button ng-show="addVisible" id="companyAdd" ng-click="companySubmit();companyForm.$setPristine()" kendo-button class="k-primary combineButton" ng-disabled="companyForm.$invalid"><span class="k-icon k-add"></span>Add</button>
+<button ng-show="updateVisible" ng-click="companyUpdate();companyForm.$setPristine()" kendo-button class="k-primary combineButton" ng-disabled="companyForm.$invalid"><span class="k-icon k-update"></span>Update</button>

@@ -1,0 +1,27 @@
+<div id="homePage" ng-controller="LoginController">
+    <div id="LoginPane">
+        <div class="userRegistration" kendo-window="userRegistrationPopUp"
+             k-title="'User Registration'"
+             k-width="430"
+             k-height="390"
+             k-visible="false"
+             k-modal="true"
+             k-content="{url: 'userRegistration.html'}"
+             k-position="{ top: 150, left:450 }"
+             k-on-open="userRegistrationPopUp = true"
+             k-on-close="userRegistrationPopUp = false">
+        </div>
+        <ul>
+            <li><input type="text" class="k-textbox login-textbox" placeholder="User Name" ng-model="user.userName"></li>
+            <li><input type="password" class="k-textbox login-textbox" placeholder="Password" ng-model="user.password"></li>
+            <li><span id="registrationLink" ng-click="register()">Not yet registered?</span></li>
+            <br/><span class="error">{{loginError}}</span>
+        </ul>
+        <br/>
+        <div style="margin-left:20%; word-wrap: break-word;">
+            <button kendo-button class="k-primary login-button" ng-click="login()">
+                <i class="icon-large icon-thumbs-up"></i></span><strong>Sign In</strong>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+<span kendo-notification id="notification"
+k-position= "{
+    pinned: true,
+    top: 30,
+    right: 50
+}"
+k-auto-hide-after= "2500"
+k-stacking= "'down'"
+k-templates= '[{
+                type: "upload-success",
+                template: "<div class=\"upload-success\"><img src=\"../assets/image/tick.gif\" style=\"width:40px; height:40px;\"/><h3>#= message #</h3></div>"
+            },
+            {
+                type: "error",
+                template: "<div class=\"upload-error\"><img src=\"../assets/image/error-icon.png\" style=\"width:40px; height:40px;\"/><h3>#= message #</h3></div>"
+            }]'
+style="display:none;"></span>

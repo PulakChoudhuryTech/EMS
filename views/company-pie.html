@@ -1,0 +1,29 @@
+<div style="width:100%; height:100%; background-color:white;" ng-controller="CompanyController">
+    <div kendo-chart
+        k-data-source="companyCountData"
+        k-title= "{
+            text: 'Employees in respective companies'
+        }"
+        k-legend= "{
+           position: 'top'
+       }"
+        k-series= "[{
+            type: 'pie',
+            field: 'count',
+            categoryField: 'name'
+        }]"
+        k-series-defaults= "{
+            labels: {
+                template: '#= dataItem.name # - #= kendo.format(\'{0:P}\', percentage) #',
+                position: 'outsideEnd',
+                visible: true,
+                background: 'transparent'
+            }
+        }"
+        k-tooltip= "{
+            visible: true,
+            template: '#= dataItem.name # - #= kendo.format(\'{0:P}\', percentage) #'
+        }"
+        id="chart"  style="width:60%; height:60%; margin-left:20%">
+    </div>
+</div>

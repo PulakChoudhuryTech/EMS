@@ -1,0 +1,8 @@
+<div ng-controller="EmployeeController">
+    <div kendo-drop-down-list class="projectDropDown" k-data-source="workingProjectList" ng-model="projectSelected"
+            k-option-label = "'Select Project'" ng-change="getProjectStatus()"></div><br/>
+    <span style="font-size: 15px; font-weight: bold"> Project Completed:</span>
+    <div kendo-progress-bar k-type= "percent"
+
+    ng-model="projectCompletedValue" style="width:45%; margin-bottom: 25px;"><span style="float: right;margin-top:8px;padding-left:5x;">%</span></div>
+</div>

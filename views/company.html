@@ -1,0 +1,78 @@
+
+<div ng-controller="CompanyController">
+    <div id="companyList">
+        <div class="ListHeader">
+            <img ng-src="{{content.companyImage}}" style="width:25px; height:25px;"/>
+            <span>Company Lists</span>
+        </div>
+            <ul>
+                <li id="companies" ng-repeat="x in companyDataList" zoom-content>{{x.name}}</li>
+            </ul>
+    </div>
+    <div id="companyPane">
+        <div class="updateCompany" kendo-window="updateCompanyPopUp"
+             k-title="'Update Company'"
+             k-width="630"
+             k-height="370"
+             k-visible="false"
+             k-modal="true"
+             k-position="{ top: 150, left:350 }"
+             k-content="{url: 'company-form.html'}"
+             k-on-open="updateCompanyPopUpvisible = true"
+             k-on-close="updateCompanyPopUpvisible = false">
+        </div>
+        <div class="deleteConfirmation" kendo-window="editCompanyPopUp"
+             k-title="'Delete Confirmation'"
+             k-width="450"
+             k-height="150"
+             k-visible="false"
+             k-modal="true"
+             k-position="{ top: 350, left:450 }"
+             k-content="{url: 'deleteConfirmation.html'}"
+             k-on-open="editCompanyPopUpvisible = true"
+             k-on-close="editCompanyPopUpvisible = false">
+        </div>
+        <div  id="companyContents">
+            <div ng-include="'company-form.html'"></div>
+        </div>
+        <hr/>
+        <div>
+            <div  style="margin-left:70%">
+                <span><strong>Search: </strong></span>
+                <span class="k-textbox k-space-right">
+                    <input type="text"  placeholder="Enter text" ng-model="searchText" ng-change="searchCompanyRecord()"/>
+                    <a class="k-icon k-i-search"></a>
+                </span>
+            </div>
+            <div kendo-grid="grid" id="grid" class="detailGrid"
+                k-data-source="companyGridData"
+                k-pageable='{ "refresh": true, "pageSizes": true }'
+                k-options="testComp"
+                k-scrollable="true",
+                k-sortable="true",
+                k-selectable="true",
+                k-data-bound="companyGridDataBound",
+                k-columns= '[
+                       { field: "name", title:"Name", width: "90px",
+                        attributes: {"ng-dblclick":"updateCompanyPopUp.open();editCompany(dataItem)"} },
+                       { field: "ceo", title:"CEO", width: "100px",
+                        attributes: {"ng-dblclick":"updateCompanyPopUp.open();editCompany(dataItem)"} },
+                       { field: "address", title:"Address", width: "100px",
+                        attributes: {"ng-dblclick":"updateCompanyPopUp.open();editCompany(dataItem)"} },
+                       { field: "state", title: "State", width: "90px",
+                        attributes: {"ng-dblclick":"updateCompanyPopUp.open();editCompany(dataItem)"} },
+                       { field: "country", title:"Country", width: "90px",
+                        attributes: {"ng-dblclick":"updateCompanyPopUp.open();editCompany(dataItem)"} },
+                       { field: "pin", title:"pin", width: "100px",
+                        attributes: {"ng-dblclick":"updateCompanyPopUp.open();editCompany(dataItem)"} },
+                       { field: "contact", title:"Contact" , width: "100px",
+                        attributes: {"ng-dblclick":"updateCompanyPopUp.open();editCompany(dataItem)"}},
+                       { field: "website", title: "WebsiteURL", width: "180px",
+                        attributes: {"ng-dblclick":"updateCompanyPopUp.open();editCompany(dataItem)"} },
+                       {template : "<button kendo-button class=\"k-primary\" ng-click=\"updateCompanyPopUp.open();editCompany(dataItem)\"><span class=\"k-icon k-edit\"></span>Edit</button>", width:"90px"},
+                       {template : "<button kendo-button class=\"k-primary\" ng-click=\"editCompanyPopUp.open();deleteCompanyRecord(dataItem)\"><span class=\"k-icon k-delete\"></span>Delete</button>", width:"90px"}
+                   ]'
+            ></div>
+        </div>
+</div>
+</div>

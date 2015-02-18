@@ -1,0 +1,22 @@
+[
+    {
+        "project" : "Altisource",
+        "completedStatus" : 80
+    },
+    {
+        "project" : "SoleStruck",
+        "completedStatus" : 20
+    },
+    {
+        "project" : "Amazon",
+        "completedStatus" : 60
+    },
+    {
+        "project" : "SetMore",
+        "completedStatus" : 30
+    },
+    {
+        "project" : "CBeyond",
+        "completedStatus" : 50
+    }
+]

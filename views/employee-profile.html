@@ -1,0 +1,70 @@
+<div ng-controller="EmployeeController" style="border: 1px solid #ef671a;">
+    <div class="employeeListDropDownPane">
+        <span id="employeeSelectLabel">Select Employee</span>
+        <select kendo-drop-down-list class="employeeDropDown" ng-model="selectedEmployee" name="selectedEmployee" required k-options="employeeList" ng-change="selectedEmployeeName()"></select>
+    </div>
+    <div ng-include="'notification-template.html'"></div>
+    <div class="employee_profile">
+        <img ng-src="{{empImage}}" id="employeeProfileImage"/>
+        <div id="employeeProfileName">
+            <ul>
+                <li class="empInfo"><h3>{{profile.name}}<h3></li>
+                <li class="empInfo"><h4>{{empComp}}</h4></li>
+                <li class="empInfo"><h5>{{empEmail}}</h5></li>
+            </ul>
+        </div>
+    </div>
+    <div class="employee_records">
+         <div kendo-tab-strip k-content-urls="[ 'project-list.html', 'project-status.html' ]">
+              <ul>
+                <li class="k-state-active">Project List</li>
+                <li>Project Status</li>
+              </ul>
+              <div></div>
+              <div></div>
+        </div>
+    </div>
+    <div class="employeeDetailPane">
+        <ul class="profileGrid">
+            <li>
+                <span class="profileLabel">Name: </span>
+                <input type="text" disabled="disabled" class="k-textbox k-state-disabled profileInputs" name="employeeName" ng-model="profile.name">
+            </li>
+            <li>
+                <span class="profileLabel">Date of birth: </span>
+                <input  class="profileInputs" kendo-date-picker placeholder="Date of Birth" name="dob" ng-model="profile.dob" required/>
+            </li>
+            <li>
+                <span class="profileLabel">Language: </span>
+                <select kendo-drop-down-list class="profileInputs" ng-model="profile.language" name="language" required k-options="languageList"></select>
+            </li>
+            <li>
+                <span class="profileLabel">Current Project: </span>
+                <select kendo-multi-select class="profileInputs multiSelect" k-options="projectList" ng-model="profile.project"></select>
+            </li>
+        </ul>
+        <ul class="profileGrid">
+            <li>
+                <span class="profileLabel">Designation: </span>
+                <input type="text" class="k-textbox profileInputs" name="employeeName" ng-model="profile.occupation">
+            </li>
+            <li>
+                <span class="profileLabel">Skills: </span>
+                <select kendo-multi-select class="profileInputs multiSelect" k-options="selectSkills" ng-model="profile.selectedSkills"></select>
+            </li>
+            <li>
+                <span class="profileLabel">Experience: </span>
+                <input type="text" kendo-numeric-text-box class="profileInputs" k-options="{format: '# years'}" ng-model="profile.experience">
+            </li>
+        </ul>
+        <div id="kendoEditor">
+            <span class="profileLabel">Short Bio: </span>
+            <textarea kendo-editor ng-model="profile.bio"></textarea>
+        </div>
+        <br/>
+        <div id="profileButtonsPane">
+            <button kendo-button class="k-primary" ng-click="cancelProfile()">Cancel</button>
+            <button kendo-button class="k-primary" ng-click="employeeProfileUpdate()">Update</button>
+        </div>
+    </div>
+</div>

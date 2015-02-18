@@ -1,0 +1,42 @@
+[
+	{
+        "name" : "Adaptavant",
+        "ceo"  : "Kevin",
+        "address" : "Chennai",
+        "state" : "TamilNadu",
+        "country" : "India",
+        "pin"	: "600041",
+        "contact" : "8939263911",
+        "website" : "http://object-frontier.com"
+    },
+    {
+        "name" : "TrinGapps",
+        "ceo"  : "Kevin",
+        "address" : "Chennai",
+        "state" : "TamilNadu",
+        "country" : "India",
+        "pin"	: "600041",
+        "contact" : "8939263911",
+        "website" : "http://object-frontier.com"
+    },
+    {
+        "name" : "GAVS",
+        "ceo"  : "Kevin",
+        "address" : "Chennai",
+        "state" : "TamilNadu",
+        "country" : "India",
+        "pin"	: "600041",
+        "contact" : "8939263911",
+        "website" : "http://object-frontier.com"
+    },
+    {
+        "name" : "TCL",
+        "ceo"  : "Kevin",
+        "address" : "Chennai",
+        "state" : "TamilNadu",
+        "country" : "India",
+        "pin"	: "600041",
+        "contact" : "8939263911",
+        "website" : "http://object-frontier.com"
+    }
+]
